@@ -1,0 +1,6 @@
+C:\Code\lootengine\lootengine\bin\Debug\lootengine.exe.config
+C:\Code\lootengine\lootengine\bin\Debug\lootengine.exe
+C:\Code\lootengine\lootengine\bin\Debug\lootengine.pdb
+C:\Code\lootengine\lootengine\obj\Debug\lootengine.csprojResolveAssemblyReference.cache
+C:\Code\lootengine\lootengine\obj\Debug\lootengine.exe
+C:\Code\lootengine\lootengine\obj\Debug\lootengine.pdb
