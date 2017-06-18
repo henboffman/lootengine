@@ -19,6 +19,7 @@ namespace lootengine.Models
         public int ModifierCount;
         public List<int> Modifiers;
         public int PackCount;
+        public List<List<Enemy>> Packs;
 
         public Environment(Random random = null, int level = 5, int packCount = 5)
         {
@@ -26,12 +27,13 @@ namespace lootengine.Models
             Level = level;
             ModifierCount = 0;
             Modifiers = new List<int>();
+            Packs = new List<List<Enemy>>();
             if (random == null)
             {
                 PackCount = packCount;
             } else
             {
-                PackCount = random.Next(1, 20);
+                PackCount = random.Next(1, 5);
             }
         }
         

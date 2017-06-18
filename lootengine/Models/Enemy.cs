@@ -29,6 +29,7 @@ namespace lootengine.Models
         public int Level;
         public int Health;
         public int Damage;
+        public double AttackPerSecond;
         public DamageType DamageType;
         public EnemyType Rank;
         public int ModifierCount;
@@ -38,10 +39,13 @@ namespace lootengine.Models
 
         public Enemy (Random random, int environmentLevel, EnemyType enemyType = EnemyType.Normal) {
             var plusOrMinusValue = random.Next(0, 2) * 2 - 1; //determines if plus or minus value
+
+            if (plusOrMinusValue < 1) plusOrMinusValue = 1;
+
             Level = environmentLevel + (plusOrMinusValue * random.Next(0, 5));
 
-            Health = 100 * Level;
-            Damage = 10 * Level;
+            Health = 15 * Level;
+            Damage = 1 * Level;
 
             Array damageTypes = Enum.GetValues(typeof(DamageType));            
             DamageType= (DamageType)damageTypes.GetValue(random.Next(damageTypes.Length));

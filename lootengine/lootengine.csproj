@@ -45,8 +45,11 @@
   <ItemGroup>
     <Compile Include="Enums\DamageType.cs" />
     <Compile Include="Enums\EnemyType.cs" />
+    <Compile Include="Enums\Rarity.cs" />
+    <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Enemy.cs" />
     <Compile Include="Models\Environment.cs" />
+    <Compile Include="Models\Weapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

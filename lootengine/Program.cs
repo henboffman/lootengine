@@ -9,16 +9,70 @@ namespace lootengine
 {
     class Program
     {
-        static void Main(string[] args)
-        {
+        public static Character MainCharacter = new Character();
 
-            GenerateEnvironment();
+        static void Main(string[] args)
+        {   
+            var running = true;
+
+            while (running)
+            {
+                Level();
+            }
+            
             Console.ReadLine();
         }
 
-        public static void GenerateEnvironment()
+        static void Level()
         {
-            int environmentLevel = 5;
+            var CurrentEnvironment = GenerateEnvironment();
+            while (CurrentEnvironment.Packs.Count > 0) {
+                EngagePack(CurrentEnvironment);
+            }
+        }
+
+        public static void EngagePack(Models.Environment CurrentEnvironment)
+        {
+            //find pack
+            //foreach is a crude solution to this
+            var index = 0;
+            while(CurrentEnvironment.Packs.Count > 0)
+            {
+                AttackPack(CurrentEnvironment.Packs[index]);
+                index++;
+            }
+
+            
+            
+        }
+
+        public static void AttackPack(List<Enemy> pack)
+        {
+            foreach (var enemy in pack)
+            {
+                Console.WriteLine("remaining in pack:" + pack.Count);
+                EngageEnemy(MainCharacter, enemy);
+            }
+        }
+
+        public static void EngageEnemy(Character hero, Enemy enemy)
+        {
+            while (hero.Health > 0 && enemy.Health > 0)
+            {
+                HeroAttack(hero, enemy);
+            }
+        }
+
+        public static void HeroAttack(Character hero, Enemy enemy) {
+            //establish timer
+            //timer check
+            //attack
+            //update health
+        }
+
+        public static Models.Environment GenerateEnvironment()
+        {
+            int environmentLevel = 2;
             var random = new Random();
             Console.WriteLine("{0,10}{1,10}{2,15}{3,15}", "Health", "Damage", "DamageType", "EnemyType");
 
@@ -31,11 +85,12 @@ namespace lootengine
 
             for (int i = 0; i < environment.PackCount; i++)
             {
-                GeneratePack(random, environment.Level);
+                environment.Packs.Add(GeneratePack(random, environment.Level));
             }
+            return environment;
         }
 
-        public static void GeneratePack(Random random, int environmentLevel)
+        public static List<Enemy> GeneratePack(Random random, int environmentLevel)
         {
             var pack = new List<Enemy>();
             var packSize = random.Next(1, 10);
@@ -45,8 +100,8 @@ namespace lootengine
                 var enemy = new Enemy(random, environmentLevel);
                 pack.Add(enemy);
                 Console.WriteLine("{0,10}{1,10}{2,15}{3,15}", enemy.Health, enemy.Damage, enemy.DamageType, enemy.Rank);
-
             }
+            return pack;
         }
     }
 }
