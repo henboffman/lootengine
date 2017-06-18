@@ -29,17 +29,25 @@ namespace lootengine
             while (CurrentEnvironment.Packs.Count > 0) {
                 EngagePack(CurrentEnvironment);
             }
+            Console.WriteLine("All packs defeated! Next Level...");
+
+            Console.ReadLine();
         }
 
         public static void EngagePack(Models.Environment CurrentEnvironment)
         {
             //find pack
             //foreach is a crude solution to this
-            var index = 0;
+            var packIndex = 0;
             while(CurrentEnvironment.Packs.Count > 0)
             {
-                AttackPack(CurrentEnvironment.Packs[index]);
-                index++;
+                AttackPack(CurrentEnvironment.Packs[packIndex]);
+                if (CurrentEnvironment.Packs[packIndex].Count == 0)
+                {
+                    CurrentEnvironment.Packs.RemoveAt(packIndex);
+                    packIndex++;
+                }
+                
             }
 
             
@@ -48,11 +56,24 @@ namespace lootengine
 
         public static void AttackPack(List<Enemy> pack)
         {
-            foreach (var enemy in pack)
+            var index = 0;
+            while (pack.Count > 0)
             {
                 Console.WriteLine("remaining in pack:" + pack.Count);
-                EngageEnemy(MainCharacter, enemy);
+                EngageEnemy(MainCharacter, pack[index]);
+                if (pack[index].Health == 0)
+                {
+                    Console.WriteLine("Enemy defeated!");
+                    pack.RemoveAt(index);
+                    index++;
+                }
+
             }
+
+            Console.WriteLine("Pack defeated!");
+                
+                
+            
         }
 
         public static void EngageEnemy(Character hero, Enemy enemy)
@@ -65,6 +86,27 @@ namespace lootengine
 
         public static void HeroAttack(Character hero, Enemy enemy) {
             //establish timer
+            DateTime attackStart = new DateTime();
+            attackStart = DateTime.Now;
+            
+            var attacksPerSecond = 1 / hero.AttackPerSecond;
+            var nextAttack = attackStart.AddSeconds(attacksPerSecond);
+            
+            if (DateTime.Now > nextAttack)
+            {
+                attackStart = DateTime.Now;
+                nextAttack = attackStart.AddSeconds(attacksPerSecond);
+            }
+
+            if (nextAttack <= DateTime.Now)
+            {
+                enemy.Health -= hero.Damage;
+                Console.WriteLine("enemy health:" + enemy.Health);
+            }
+            
+
+
+            
             //timer check
             //attack
             //update health

@@ -12,7 +12,7 @@ namespace lootengine.Models
         public int Level = 1;
         public int CarryWeight = 20;
         public int InventoryWeight = 5;
-        public double Damage = 10;
+        public int Damage = 10;
         public double AttackPerSecond = 1;
         public int Health = 200;
         public int Armor = 10;
