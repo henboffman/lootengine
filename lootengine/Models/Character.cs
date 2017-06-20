@@ -62,6 +62,7 @@ namespace lootengine.Models
             //get and set experience required for next level
             //this is done on level up to reduce the number of database requests to once per level
             //ExperienceForNextLevel = Experience.Where(x => x.Level == Level + 1).Experience;
+            //todo: add this once database configured and EF added
         }
     }
 }
