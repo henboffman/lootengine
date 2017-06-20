@@ -8,18 +8,29 @@ namespace lootengine.Models
 {
     class Character
     {
-        public string Name = "new";
-        public int Level = 1;
-        public int CarryWeight = 20;
-        public int InventoryWeight = 5;
-        public int Damage = 10;
-        public double AttackPerSecond = 1;
-        public int Health = 200;
-        public int Armor = 10;
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int Experience { get; set; }
+        public int CarryWeight { get; set; }
+        public int InventoryWeight { get; set; }
+        public int Damage { get; set; }
+        public double AttackPerSecond { get; set; }
+        public int Health { get; set; }
+        public int Armor { get; set; }
 
         public Character()
         {
-            
+            Name = "new";
+            Level = 1;
+            Experience = 0;
+            CarryWeight = 20;
+            InventoryWeight = 5;
+            Damage = 10;
+            AttackPerSecond = 1;
+            Health = 250;
+            Armor = 10;
+
+
         }
     }
 }

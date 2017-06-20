@@ -92,7 +92,7 @@ namespace lootengine
             var attacksPerSecond = 1 / hero.AttackPerSecond;
             var nextAttack = attackStart.AddSeconds(attacksPerSecond);
             
-            if (DateTime.Now > nextAttack)
+                if (nextAttack <= DateTime.Now)
             {
                 attackStart = DateTime.Now;
                 nextAttack = attackStart.AddSeconds(attacksPerSecond);
@@ -102,6 +102,8 @@ namespace lootengine
             {
                 enemy.Health -= hero.Damage;
                 Console.WriteLine("enemy health:" + enemy.Health);
+                attackStart = DateTime.Now;
+                nextAttack = attackStart.AddSeconds(attacksPerSecond);
             }
             
 

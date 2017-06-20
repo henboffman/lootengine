@@ -14,12 +14,12 @@ namespace lootengine.Models
         //modifiers:[]
         //numberOfPacks:int   //roll number of packs on environment instantiation
 
-        public string Name;
-        public int Level;
-        public int ModifierCount;
-        public List<int> Modifiers;
-        public int PackCount;
-        public List<List<Enemy>> Packs;
+        public string Name{ get; set; }
+        public int Level{ get; set; }
+        public int ModifierCount{ get; set; }
+        public List<int> Modifiers{ get; set; }
+        public int PackCount{ get; set; }
+        public List<List<Enemy>> Packs{ get; set; }
 
         public Environment(Random random = null, int level = 5, int packCount = 5)
         {
