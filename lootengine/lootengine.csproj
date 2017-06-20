@@ -45,11 +45,14 @@
   <ItemGroup>
     <Compile Include="Enums\DamageType.cs" />
     <Compile Include="Enums\EnemyType.cs" />
+    <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\Rarity.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\Enemy.cs" />
     <Compile Include="Models\Environment.cs" />
-    <Compile Include="Models\Weapon.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Items\Armor.cs" />
+    <Compile Include="Models\Items\Weapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
